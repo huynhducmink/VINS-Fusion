@@ -29,6 +29,8 @@
 #include "../estimator/parameters.h"
 #include <fstream>
 
+#include <std_msgs/Bool.h>
+
 extern ros::Publisher pub_odometry;
 extern ros::Publisher pub_path, pub_pose;
 extern ros::Publisher pub_cloud, pub_map;
@@ -38,6 +40,8 @@ extern ros::Publisher pub_key;
 extern nav_msgs::Path path;
 extern ros::Publisher pub_pose_graph;
 extern int IMAGE_ROW, IMAGE_COL;
+
+extern ros::Publisher pub_bool_receive_first_image;
 
 void registerPub(ros::NodeHandle &n);
 
@@ -64,3 +68,5 @@ void pubKeyframe(const Estimator &estimator);
 void pubRelocalization(const Estimator &estimator);
 
 void pubCar(const Estimator & estimator, const std_msgs::Header &header);
+
+void pubBoolReceiveFirstImage(const std_msgs::Bool msg);

@@ -159,6 +159,10 @@ void Estimator::changeSensorType(int use_imu, int use_stereo)
 
 void Estimator::inputImage(double t, const cv::Mat &_img, const cv::Mat &_img1)
 {
+    if (inputImageCnt==0){
+        std_msgs::Bool bool_msg;
+        bool_msg.data = true;
+        pubBoolReceiveFirstImage(bool_msg);}
     inputImageCnt++;
     map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> featureFrame;
     TicToc featureTrackerTime;
